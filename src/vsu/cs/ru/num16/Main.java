@@ -5,7 +5,12 @@ public class Main {
 
     public static void main(String[] args) {
         int n = readValue('n');
-        if (!checkInput(n)) return;
+
+        if (!checkInput(n)) {
+            System.out.println("You entered incorrect n ");
+            return;
+        }
+
         int a = readValue('a');
         int a1 = 1, a2 = 2, a3 = 3;
         int initialSum = calcInitialSum(a1, a2, a3, a);
@@ -14,7 +19,6 @@ public class Main {
         printElements(n, a1, a2, a3);
         printFinalSum(finalSum);
     }
-
     private static int readValue(char name) {
         System.out.printf("Input %s: ", name);
         Scanner scan = new Scanner(System.in);
