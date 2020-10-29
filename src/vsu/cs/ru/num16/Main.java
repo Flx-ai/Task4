@@ -15,10 +15,10 @@ public class Main {
         int a1 = 1, a2 = 2, a3 = 3;
         int initialSum = calcInitialSum(a1, a2, a3, a);
         int finalSum = calcFinalSum(n, a, a1, a2, a3, initialSum);
-
         printElements(n, a1, a2, a3);
         printFinalSum(finalSum);
     }
+
     private static int readValue(char name) {
         System.out.printf("Input %s: ", name);
         Scanner scan = new Scanner(System.in);
