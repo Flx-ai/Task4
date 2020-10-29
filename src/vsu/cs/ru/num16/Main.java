@@ -4,14 +4,15 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        int N = readValue('N');
-        if (!checkInput(N)) return;
-
+        int n = readValue('n');
+        if (!checkInput(n)) return;
         int a = readValue('a');
-        int A1 = 1, A2 = 2, A3 = 3;
+        int a1 = 1, a2 = 2, a3 = 3;
+        int initialSum = calcInitialSum(a1, a2, a3, a);
+        int finalSum = calcFinalSum(n, a, a1, a2, a3, initialSum);
 
-        printElements(N, A1, A2, A3);
-        printFinalSum(N, a, A1, A2, A3);
+        printElements(n, a1, a2, a3);
+        printFinalSum(finalSum);
     }
 
     private static int readValue(char name) {
@@ -20,47 +21,44 @@ public class Main {
         return scan.nextInt();
     }
 
-    private static int calcInitialSum(int A1, int A2, int A3, int a) {
-        if (a > A3) {
-            return A1 + A2 + A3;
-        } else if (a > A2) {
-            return A1 + A2;
-        } else if (a > A1) {
-            return A1;
+    private static int calcInitialSum(int a1, int a2, int a3, int a) {
+        if (a > a3) {
+            return a1 + a2 + a3;
+        } else if (a > a2) {
+            return a1 + a2;
+        } else if (a > a1) {
+            return a1;
         } else return 0;
     }
 
-    private static int calcFinalSum(int N, int a, int A1 , int A2 , int A3 ) {
+    private static int calcFinalSum(int n, int a, int a1 , int a2 , int a3, int initialSum) {
+        int finalSum = initialSum;
 
-        int sum = calcInitialSum(A1, A2, A3, a);
-
-        for (int k = 4; k <= N; k++) {
-            int Ak = A3 + A2 - 2 * A1;
-            A1 = A2; A2 = A3; A3 = Ak;
+        for (int k = 4; k <= n; k++) {
+            int Ak = a3 + a2 - 2 * a1;
+            a1 = a2; a2 = a3; a3 = Ak;
             if (Ak < a) {
-                sum += Ak;
+                finalSum += Ak;
             }
         }
-        return sum;
+        return finalSum;
     }
 
-    private static void printFinalSum(int N, int a, int A1, int A2, int A3) {
-        int sum = calcFinalSum(N, a, A1, A2 , A3);
-        System.out.println("\n" + "Сумма чисел = " + sum);
+    private static void printFinalSum(int finalSum) {
+        System.out.println("\n" + "Сумма чисел = " + finalSum);
     }
 
-    private static boolean checkInput(int N) {
-        return N > 2;
+    private static boolean checkInput(int n) {
+        return n > 2;
     }
 
-    private static void printElements(int N, int A1, int A2, int A3){
+    private static void printElements(int n, int a1, int a2, int a3) {
+        System.out.print(a1 + " " + a2 + " " + a3 + " ");
 
-        System.out.print(A1 + " " + A2 + " " + A3 + " ");
-
-        for (int k = 4; k <= N; k++) {
-            int Ak = A3 + A2 - 2 * A1;
+        for (int k = 4; k <= n; k++) {
+            int Ak = a3 + a2 - 2 * a1;
             System.out.print(Ak + " ");
-            A1 = A2; A2 = A3; A3 = Ak;
+            a1 = a2; a2 = a3; a3 = Ak;
         }
     }
 }
