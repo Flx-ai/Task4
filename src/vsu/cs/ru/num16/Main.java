@@ -37,7 +37,6 @@ public class Main {
 
     private static int calcFinalSum(int n, int a, int a1 , int a2 , int a3, int initialSum) {
         int finalSum = initialSum;
-
         for (int k = 4; k <= n; k++) {
             int Ak = a3 + a2 - 2 * a1;
             a1 = a2; a2 = a3; a3 = Ak;
@@ -55,7 +54,7 @@ public class Main {
     
     private static void printElements(int n, int a1, int a2, int a3) {
         System.out.print("Элементы последовательности: " + a1 + " " + a2 + " " + a3 + " ");
-
+        
         for (int k = 4; k <= n; k++) {
             int Ak = a3 + a2 - 2 * a1;
             System.out.print(Ak + " ");
