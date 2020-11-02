@@ -6,8 +6,8 @@ public class Main {
     public static void main(String[] args) {
         int n = readValue('n');
 
-        if (!checkInput(n)) {
-            System.out.println("You entered incorrect n ");
+        if (n <= 2) {
+            System.out.println("You entered incorrect n. Variable n must be greater than 2.");
             return;
         }
 
@@ -49,13 +49,10 @@ public class Main {
     }
 
     private static void printFinalSum(int finalSum) {
-        System.out.println("\n" + "Сумма чисел = " + finalSum);
+        System.out.println();
+        System.out.println("Сумма чисел = " + finalSum);
     }
-
-    private static boolean checkInput(int n) {
-        return n > 2;
-    }
-
+    
     private static void printElements(int n, int a1, int a2, int a3) {
         System.out.print("Элементы последовательности: " + a1 + " " + a2 + " " + a3 + " ");
 
